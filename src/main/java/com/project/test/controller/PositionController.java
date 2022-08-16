@@ -4,6 +4,7 @@ import com.project.test.dto.PositionDto;
 import com.project.test.entities.Position;
 import com.project.test.services.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,12 +18,12 @@ public class PositionController {
     private PositionService positionService;
 
     @GetMapping("/positions")
-    public List<Position> getAll(){
+    public ResponseEntity<Object> getAll(){
         return positionService.fetchAll();
     }
 
     @GetMapping("/position/{id}")
-    public Position getById(@PathVariable UUID id){
+    public ResponseEntity<Object> getById(@PathVariable UUID id){
         return positionService.fetchById(id);
     }
 

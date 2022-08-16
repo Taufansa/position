@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8181}
+  port: ${PORT:9191}
 
 spring:
   datasource:
@@ -14,13 +14,13 @@ spring:
       maximum-pool-size: "${DB_MAX_POOL:5}"
 
     jpa:
-      #    hibernate:
-      #      ddl-auto: none
+      hibernate:
+      ddl-auto: true
       database: postgresql
       database-platform: org.hibernate.dialect.PostgreSQLDialect
-      generate-ddl: true
-      show-sql: "${SQL_SHOW_SQL:false}"
+#      generate-ddl: true
+      show-sql: "${SQL_SHOW_SQL:true}"
       properties:
         hibernate:
-          format_sql: "${SQL_FORMAT_SQL:false}"
+          format_sql: "${SQL_FORMAT_SQL:true}"
 

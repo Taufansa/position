@@ -4,7 +4,9 @@ import com.project.test.dto.PositionDto;
 import com.project.test.entities.Position;
 import com.project.test.repositories.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,15 +14,19 @@ import java.util.UUID;
 @Service
 public class PositionService {
 
+    private String baseUrl = "http://dev3.dansmultipro.co.id/api/recruitment";
+
     @Autowired
     private PositionRepository positionRepository;
 
-    public List<Position> fetchAll(){
-        return positionRepository.findAll();
+    public ResponseEntity<Object> fetchAll(){
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForEntity(baseUrl + "/positions.json", Object.class);
     }
 
-    public Position fetchById(UUID id){
-        return positionRepository.findById(id).get();
+    public ResponseEntity<Object> fetchById(UUID id){
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForEntity(baseUrl + "/positions/"+id.toString(), Object.class);
     }
 
     public Position createPosition(PositionDto positionDto){

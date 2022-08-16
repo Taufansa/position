@@ -21,6 +21,7 @@ public class UserService {
                 .fullName(userDto.getFullName())
                 .username(userDto.getUsername())
                 .password(encoder.encode(userDto.getPassword()))
+//                .password(userDto.getPassword())
                 .build();
         return userRepository.save(user);
     }

@@ -17,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "positons")
+@Table(name = "positions")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Position {
     @Id

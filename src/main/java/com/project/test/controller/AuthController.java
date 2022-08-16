@@ -25,7 +25,7 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
         } catch (Exception ex) {
-            throw new Exception("Wrong username/password");
+            throw new Exception(ex.getMessage());
         }
         return jwtUtil.generateToken(authRequest.getUsername());
     }
